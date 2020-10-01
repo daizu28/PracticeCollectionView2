@@ -31,14 +31,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
           // レイアウト設定(デフォルトでのセルの幅は50らしい)
           let layout = UICollectionViewFlowLayout()
-          layout.itemSize = CGSize(width: 100, height: 100)
+          layout.itemSize = CGSize(width: 160, height: 160)
           collectionView.collectionViewLayout = layout
         //行の最後のセルがふちにぴったりとくっつく(横の余白)
-        layout.minimumInteritemSpacing = 10
+        layout.minimumInteritemSpacing = 8
         //縦の余白
-        layout.minimumLineSpacing = 50
+        layout.minimumLineSpacing = 10
         //セクションごとのマージンみたいな
-        layout.sectionInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
+        layout.sectionInset = UIEdgeInsets(top: 24, left: 16, bottom: 24, right: 16)
+        //横スクロール
+        layout.scrollDirection = .horizontal
+
 
     }
     
@@ -46,7 +49,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
      // １つのセクションの中に表示するセル（要素）の数。
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //表示したい数
-        return 8
+        return 16
         
     }
     
@@ -65,7 +68,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // セクションを増やす(これを横に増やせればできそう？)
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
     
     
