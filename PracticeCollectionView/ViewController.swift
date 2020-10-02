@@ -15,6 +15,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     private let images = ["checkedTask", "emptyTask", "enterTask"]
     
+    //ユーザーデフォルトを使うよ
+    let saveData: UserDefaults = UserDefaults.standard
+    
+    //やりたいことをラベルに表示させるための文字(これでいいのか分からない)
+    var todo: String = ""
+    
+    //カードのページでチェックされているかどうかを確かめるための変数
+    var isCheck: Bool = false
+    
+    
     // レイアウト設定(エッジ)
        private let sectionInsets = UIEdgeInsets(top: 5.0, left: 2.0, bottom: 5.0, right: 2.0)
 
@@ -49,7 +59,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
      // １つのセクションの中に表示するセル（要素）の数。
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //表示したい数
-        return 16
+        return 100
         
     }
     
@@ -66,7 +76,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
-    // セクションを増やす(これを横に増やせればできそう？)
+    // セクションを増やす
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -74,10 +84,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // セルが選択されたときの処理
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("tapされたよ")
+        let cell = UICollectionViewCell()
+        //セクション数の取得
+        let sectionNumber = indexPath.section
+        //行数の取得
+        let rowNumber = indexPath.row
+        //セクションで分けてないから行のほうに何個目なのか出る
+        print("このセルはセクション\(indexPath.section)の\(indexPath.row)行目です")
     }
 
 }
+
+
 
 
 //本当は良くないかもだけどgithubで上手にブランチが切れてなかった用のコメントアウト
