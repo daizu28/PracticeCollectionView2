@@ -28,7 +28,7 @@ class CardViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    //戻れるのかな？戻るボタン
+    //1個前でも戻れるのかな？戻るボタン
     @IBAction func back(){
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }

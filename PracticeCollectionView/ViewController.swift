@@ -80,7 +80,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         for i in 0 ..< 99 {
             //文字が空だったら
             if todoArray[i].isEmpty == true {
-            //全部の画像が変わってしまう…
+            //全部の画像が変わってしまう…うーん
             let backgroundImage = UIImage(named: images[1])
             backgroundImageView.image = backgroundImage
                 
@@ -115,6 +115,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //画面遷移させる
         performSegueToCardView()
         
+        //試しにここに置いてみたけどrowNumberがうまくいかない…
+        func prepare(for segue: UIStoryboardSegue, sender: Any?){
+               if segue.identifier == "toCardView" {
+                let cardViewController.rowNumber = indexPath.row
+               }
+           }
+        
     }
 
     //セグエを指定して画面遷移させるメソッド
@@ -126,7 +133,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //セグエを準備する時に呼ばれるメソッド(値渡しをする)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "toCardView" {
-            let cardViewController.rowNumber = self.rowNumber
+            let cardViewController;.rowNumber = self.rowNumber
         }
     }
     
