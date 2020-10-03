@@ -13,16 +13,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //コレクションビューの宣言？Flowlayoutには必要なのかな？
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
     private let images = ["checkedTask", "emptyTask", "enterTask"]
     
     //ユーザーデフォルトを使うよ
     let saveData: UserDefaults = UserDefaults.standard
     
-    //やりたいことをラベルに表示させるための文字(これでいいのか分からない)
-    var todo: String = ""
-    
-    //カードのページでチェックされているかどうかを確かめるための変数
-    var isCheck: Bool = false
+    //クラスを入れるための配列
+    var todoArray = [String]()
     
     
     // レイアウト設定(エッジ)
@@ -52,7 +50,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //横スクロール
         layout.scrollDirection = .horizontal
 
-
+        //todoArrayに入れていく
+        todoArray = ["", "", "", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
+        
     }
     
     
@@ -68,10 +68,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
-         // Tag番号を使ってインスタンスをつくる
+         // Tag番号を使ってインスタンスをつくる(背景の画像)
         let backgroundImageView = cell.contentView.viewWithTag(1)  as! UIImageView
-               let backgroundImage = UIImage(named: images[0])
-               backgroundImageView.image = backgroundImage
+        //Tag番号を使ってインスタンスをつくる(ラベル)
+        let titleLabel = cell.contentView.viewWithTag(2) as! UILabel
+        
+        //配列からラベルを表示
+        titleLabel.text = todoArray[indexPath.row]
+
+        //配列に文字が何もない時は背景は灰色にする
+        for i in 0 ..< 99 {
+            //文字が空だったら
+            if todoArray[i].isEmpty == true {
+            //全部の画像が変わってしまう…
+            let backgroundImage = UIImage(named: images[1])
+            backgroundImageView.image = backgroundImage
+                
+        } else {
+
+            let backgroundImage = UIImage(named: images[2])
+            backgroundImageView.image = backgroundImage
+            
+            }
+        }
         
         return cell
     }
@@ -91,8 +110,26 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let rowNumber = indexPath.row
         //セクションで分けてないから行のほうに何個目なのか出る
         print("このセルはセクション\(indexPath.section)の\(indexPath.row)行目です")
+        
+
+        //画面遷移させる
+        performSegueToCardView()
+        
     }
 
+    //セグエを指定して画面遷移させるメソッド
+    func performSegueToCardView(){
+        performSegue(withIdentifier: "toCardView", sender: nil)
+    }
+    
+    
+    //セグエを準備する時に呼ばれるメソッド(値渡しをする)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "toCardView" {
+            let cardViewController.rowNumber = self.rowNumber
+        }
+    }
+    
 }
 
 

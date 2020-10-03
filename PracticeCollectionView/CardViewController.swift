@@ -15,14 +15,24 @@ class CardViewController: UIViewController {
     
     //書き込みがあったかどうかわかるようにできないかなと言う変数
     var writeDownNumber:[Int] = [0, 1, 2]
+    
+    //IndexPathの値
+    var rowNumber: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //渡されたIndex.Pathの値を表示してみる
+        contentTextView.text = String(rowNumber)
 
         // Do any additional setup after loading the view.
     }
     
-
+    //戻れるのかな？戻るボタン
+    @IBAction func back(){
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
     //書き込みがあった時にwriteDownNumberを変更して書き込みがあった時に背景を変える
     
     
