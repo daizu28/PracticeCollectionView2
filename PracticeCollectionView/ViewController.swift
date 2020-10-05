@@ -35,6 +35,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //行数の取得
         var rowNumber = 0
     
+    //遷移したよーって時に使うやつ
+    var observer: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,14 +58,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //横スクロール
         layout.scrollDirection = .horizontal
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        roadTodoArray()
+        //遷移されたことを検知していく
+//        collectionView.dataSource = self
+//        collectionView.delegate = self
+//
+//        observer = UserDefaults.observe(\.todo, options: [.initial, .new]){ (_, change) in
+//            self.todoArray = change.newValue ?? []
+//            self.collectionView.reloadData()
+//        }
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        roadTodoArray()
+    }
     
+
+
      // １つのセクションの中に表示するセル（要素）の数。
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //表示したい数
@@ -149,7 +161,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cardViewController.rowNumber = self.rowNumber
         }
     }
-    
+
     
 }
 

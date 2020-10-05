@@ -67,7 +67,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="QqW-sY-HdP" id="MoK-Ny-vca"/>
-                        <segue destination="jIH-gf-Ro0" kind="show" identifier="toCardView" id="tQF-ZJ-Xcv"/>
+                        <segue destination="jIH-gf-Ro0" kind="presentation" identifier="toCardView" modalPresentationStyle="fullScreen" id="tQF-ZJ-Xcv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
