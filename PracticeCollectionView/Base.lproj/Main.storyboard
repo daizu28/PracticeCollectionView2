@@ -67,6 +67,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="QqW-sY-HdP" id="MoK-Ny-vca"/>
+                        <segue destination="jIH-gf-Ro0" kind="show" identifier="toCardView" id="tQF-ZJ-Xcv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -78,7 +79,7 @@
             <objects>
                 <viewController id="jIH-gf-Ro0" customClass="CardViewController" customModule="PracticeCollectionView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S70-Ge-yqT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GCH-Di-z1C">
@@ -107,6 +108,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="WiT-ZU-IOp"/>
                     </view>
+                    <navigationItem key="navigationItem" id="qMv-tn-kM3"/>
                     <connections>
                         <outlet property="contentTextView" destination="c66-y9-hcI" id="7r4-Rk-9Qn"/>
                     </connections>

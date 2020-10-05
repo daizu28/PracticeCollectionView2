@@ -115,12 +115,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //画面遷移させる
         performSegueToCardView()
         
-        //試しにここに置いてみたけどrowNumberがうまくいかない…
-        func prepare(for segue: UIStoryboardSegue, sender: Any?){
-               if segue.identifier == "toCardView" {
-                let cardViewController.rowNumber = indexPath.row
-               }
-           }
         
     }
 
@@ -133,7 +127,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //セグエを準備する時に呼ばれるメソッド(値渡しをする)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "toCardView" {
-            let cardViewController;.rowNumber = self.rowNumber
+            let cardViewController = segue.destination as! CardViewController
+            cardViewController.rowNumber = self.indexPath.row
         }
     }
     
