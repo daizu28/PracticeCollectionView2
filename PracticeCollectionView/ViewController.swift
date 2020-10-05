@@ -20,7 +20,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let saveData: UserDefaults = UserDefaults.standard
     
     //クラスを入れるための配列
-    var todoArray = [String]()
+    var todoArray : [String] = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
     
     
     // レイアウト設定(エッジ)
@@ -55,9 +55,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         layout.sectionInset = UIEdgeInsets(top: 24, left: 16, bottom: 24, right: 16)
         //横スクロール
         layout.scrollDirection = .horizontal
-
-        //todoArrayに入れていく
-        todoArray = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        roadTodoArray()
         
     }
     
@@ -69,11 +71,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
+       //今までの書き込みを読み込む
     func roadTodoArray(){
-    //データがある時に今までの書き込みを読み込む
-     if saveData.array(forKey: "text") != nil {
+ 
       todoArray = saveData.object(forKey: "text") as! [String]
-     }
+        
+        collectionView.reloadData()
+
     }
     
     // セル（要素）に表示する内容
@@ -106,6 +110,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
         return cell
+        
     }
     
     // セクションを増やす
@@ -145,9 +150,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func todoDefaults(){
-        saveData.register(defaults: ["text": todoArray])
-    }
     
 }
 
