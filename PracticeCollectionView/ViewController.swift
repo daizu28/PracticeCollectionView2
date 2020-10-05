@@ -107,9 +107,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //配列からラベルを表示
         titleLabel.text = todoArray[indexPath.row]
-
-        //それぞれのセルのそれぞれのimageViewを変えたい
-        
         
         //画像の配列のデータを読み取って表示をする(全部変わる)
         if todoArray[rowNumber] == "" {
@@ -119,7 +116,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let backgroundImage = UIImage(named: imagesArray[2])
             backgroundImageView.image = backgroundImage
         }
-                
+        
+        //それぞれのセルのそれぞれのimageViewを変えたい(これだとセルごとって感じではない…)
+        if todoArray[rowNumber] == ""{
+            var oneImage = cell.backgroundView
+            oneImage = UIImage(named: imagesArray[1])
+        backgroundImageView.image = backgroundImage
+        }
         
         
         return cell
