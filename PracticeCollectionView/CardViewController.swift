@@ -61,8 +61,12 @@ class CardViewController: UIViewController {
         saveData.set(todoTextArray, forKey: "text")
     }
     
-    
-    
+    //キーボードをタッチで閉じれる？
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        //非表示にする。
+//        if(contentTextView.isFirstResponder){
+//            contentTextView.resignFirstResponder()
+//        }
     
     
     //書き込みがあった時に背景を変える
