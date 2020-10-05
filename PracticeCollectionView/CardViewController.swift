@@ -13,27 +13,59 @@ class CardViewController: UIViewController {
     @IBOutlet var contentTextView: UITextView!
     @IBOutlet var cardImage: UIImage!
     
-    //書き込みがあったかどうかわかるようにできないかなと言う変数
-    var writeDownNumber:[Int] = [0, 1, 2]
+    //今まで書き込んでいたものを入れる
+    var todoTextArray = [String]()
     
     //IndexPathの値
     var rowNumber: Int = 0
+    
+    //ユーザーデフォルト使いますよ
+    let saveData: UserDefaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //渡されたIndex.Pathの値を表示してみる
-        contentTextView.text = String(rowNumber)
+        displayContentTextView()
 
         // Do any additional setup after loading the view.
     }
     
+    
     //1個前でも戻れるのかな？戻るボタン
     @IBAction func back(){
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+        editContentTextView()
     }
     
-    //書き込みがあった時にwriteDownNumberを変更して書き込みがあった時に背景を変える
+    
+    //今までの書き込みを読み込んで自分の分を表示。
+    func displayContentTextView(){
+        
+        if saveData.array(forKey: "text") != nil {
+        todoTextArray = saveData.object(forKey: "text") as! [String]
+            
+        //配列から自分のものを取り出して表示
+        contentTextView.text = todoTextArray[rowNumber]
+        }
+    }
+    
+    func editContentTextView(){
+        
+        //書き込んだものを配列に入れる
+        todoTextArray.insert(contentTextView.text, at: rowNumber)
+        
+        //前の書き込みを消す
+        todoTextArray.remove(at: rowNumber + 1)
+        
+        //保存
+        saveData.set(todoTextArray, forKey: "text")
+    }
+    
+    
+    
+    
+    
+    //書き込みがあった時に背景を変える
     
     
     
