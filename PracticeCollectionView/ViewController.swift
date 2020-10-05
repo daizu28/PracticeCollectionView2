@@ -14,7 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collectionView: UICollectionView!
     
     
-    private let images = ["checkedTask", "emptyTask", "enterTask"]
+    var imagesArray = ["checkedTask", "emptyTask", "enterTask"]
     
     //ユーザーデフォルトを使うよ
     let saveData: UserDefaults = UserDefaults.standard
@@ -34,6 +34,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
         //行数の取得
         var rowNumber = 0
+    
+    //セルの宣言
+    let cell = UICollectionViewCell()
     
     //遷移したよーって時に使うやつ
     var observer: NSKeyValueObservation?
@@ -105,21 +108,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //配列からラベルを表示
         titleLabel.text = todoArray[indexPath.row]
 
-        //配列に文字が何もない時は背景は灰色にする
-        for i in 0 ..< 99 {
-            //文字が空だったら
-            if todoArray[i].isEmpty == true {
-            //全部の画像が変わってしまう…うーん
-            let backgroundImage = UIImage(named: images[1])
+        //それぞれのセルのそれぞれのimageViewを変えたい
+        
+        
+        //画像の配列のデータを読み取って表示をする(全部変わる)
+        if todoArray[rowNumber] == "" {
+            let backgroundImage = UIImage(named: imagesArray[1])
             backgroundImageView.image = backgroundImage
-                
         } else {
-
-            let backgroundImage = UIImage(named: images[2])
+            let backgroundImage = UIImage(named: imagesArray[2])
             backgroundImageView.image = backgroundImage
-            
-            }
         }
+                
+        
         
         return cell
         
@@ -133,7 +134,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // セルが選択されたときの処理
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = UICollectionViewCell()
+       
         //セクション数の取得
         sectionNumber = indexPath.section
         //行数の取得
