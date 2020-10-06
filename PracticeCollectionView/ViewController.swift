@@ -117,8 +117,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             backgroundImageView.image = backgroundImage
         }
         
-        
-        
         return cell
         
     }

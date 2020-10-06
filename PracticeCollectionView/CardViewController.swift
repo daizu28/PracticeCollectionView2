@@ -11,13 +11,24 @@ import UIKit
 class CardViewController: UIViewController {
     
     @IBOutlet var contentTextView: UITextView!
-    @IBOutlet var cardImage: UIImage!
+    @IBOutlet var cardImageView: UIImageView!
+    @IBOutlet var checkedImageView: UIButton!
     
     //今まで書き込んでいたものを入れる
     var todoTextArray = [String]()
     
     //IndexPathの値
     var rowNumber: Int = 0
+    
+    //チェックボックスのオンオフ
+    var checked: Bool = false
+    
+    //背景画像の配列
+      var imagesArray = ["checkedTask", "emptyTask", "enterTask", "checkedTask2"]
+    
+    //チェックボタンの画像
+    let checkIcon = UIImage(named: "checkIcon")
+    let checkedIcon = UIImage(named: "checkedIcon")
     
     //ユーザーデフォルト使いますよ
     let saveData: UserDefaults = UserDefaults.standard
@@ -26,9 +37,29 @@ class CardViewController: UIViewController {
         super.viewDidLoad()
         
         displayContentTextView()
+        
+        checkImage()
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+          super.viewDidAppear(animated)
+        
+        changeImages()
+        
+      }
+    
+        //内容があるかないかで背景の画像を変える
+        func changeImages(){
+            if contentTextView.text == "" {
+                cardImageView.image = UIImage(named: imagesArray[1])
+                checkedImageView.isEnabled = false
+            } else {
+                cardImageView.image = UIImage(named: imagesArray[2])
+                checkedImageView.isEnabled = true
+            }
+              }
     
     
     //1個前でも戻れるのかな？戻るボタン
@@ -37,6 +68,31 @@ class CardViewController: UIViewController {
         editContentTextView()
     }
     
+    
+    @IBAction func checkButton(_ sender: UIButton){
+        
+        if checked == false{
+            checked = true
+        } else if checked == true {
+            checked = false
+        }
+        
+        checkImage()
+        
+    }
+    
+    
+    func checkImage(){
+        if checked == false{
+            //押してない時の
+            checkedImageView.setBackgroundImage(checkIcon,for: .normal)
+            cardImageView.image = UIImage(named: imagesArray[2])
+        } else if checked == true{
+            //押した時の
+            checkedImageView.setBackgroundImage(checkedIcon,for: .normal)
+            cardImageView.image = UIImage(named: imagesArray[3])
+        }
+    }
     
     //今までの書き込みを読み込んで自分の分を表示。
     func displayContentTextView(){
@@ -61,6 +117,9 @@ class CardViewController: UIViewController {
         saveData.set(todoTextArray, forKey: "text")
     }
     
+    
+    
+    
     //キーボードをタッチで閉じれる？
 //    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
 //        //非表示にする。
@@ -84,13 +143,6 @@ class CardViewController: UIViewController {
     //書き込んだ内容をメインストリーボードでもみれるようにする
     
     
-    @IBAction func backButton(){
-        
-    }
-    
-    @IBAction func checkButton(){
-        
-    }
     
 
     /*

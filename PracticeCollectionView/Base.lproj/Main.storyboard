@@ -79,40 +79,44 @@
             <objects>
                 <viewController id="jIH-gf-Ro0" customClass="CardViewController" customModule="PracticeCollectionView" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S70-Ge-yqT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GCH-Di-z1C">
-                                <rect key="frame" x="20" y="193" width="374" height="354"/>
+                                <rect key="frame" x="20" y="155" width="374" height="430"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skA-Lt-Len">
-                                <rect key="frame" x="56" y="90" width="108" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jb-AW-Xal">
+                                <rect key="frame" x="127" y="461" width="161" height="145"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="戻るボタンだよ"/>
                                 <connections>
-                                    <action selector="back" destination="jIH-gf-Ro0" eventType="touchUpInside" id="gge-lb-oNr"/>
+                                    <action selector="checkButton:" destination="jIH-gf-Ro0" eventType="touchUpInside" id="ogb-9f-Ljm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jb-AW-Xal">
-                                <rect key="frame" x="127" y="461" width="161" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="チェックボタンだよ"/>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="ここにやりたいことを書くよ" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="c66-y9-hcI">
-                                <rect key="frame" x="56" y="301" width="302" height="139"/>
+                                <rect key="frame" x="56" y="312" width="302" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skA-Lt-Len">
+                                <rect key="frame" x="20" y="73" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Rectangle 1"/>
+                                <connections>
+                                    <action selector="back" destination="jIH-gf-Ro0" eventType="touchUpInside" id="gge-lb-oNr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="WiT-ZU-IOp"/>
                     </view>
                     <navigationItem key="navigationItem" id="qMv-tn-kM3"/>
                     <connections>
+                        <outlet property="cardImageView" destination="GCH-Di-z1C" id="ahT-fR-XUh"/>
+                        <outlet property="checkedImageView" destination="8jb-AW-Xal" id="h7h-uk-8vv"/>
                         <outlet property="contentTextView" destination="c66-y9-hcI" id="7r4-Rk-9Qn"/>
                     </connections>
                 </viewController>
@@ -121,4 +125,7 @@
             <point key="canvasLocation" x="844.92753623188412" y="109.82142857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Rectangle 1" width="48" height="48"/>
+    </resources>
 </document>
