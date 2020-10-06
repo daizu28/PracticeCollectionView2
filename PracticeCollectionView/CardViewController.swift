@@ -23,6 +23,11 @@ class CardViewController: UIViewController {
     //チェックボックスのオンオフ
     var checked: Bool = false
     
+    //チェックされているかどうかを確かめる用(これいるかね？)
+    struct statusCheck {
+        var isChecked: Bool = false
+    }
+    
     //背景画像の配列
       var imagesArray = ["checkedTask", "emptyTask", "enterTask", "checkedTask2"]
     
@@ -35,9 +40,9 @@ class CardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // //今までの書き込みを読み込んで自分の分を表示。
         displayContentTextView()
-        
+        //チェックボックスを押したかどうかとチェックボックスの画像を変える
         checkImage()
 
         // Do any additional setup after loading the view.
@@ -45,7 +50,7 @@ class CardViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
           super.viewDidAppear(animated)
-        
+        //内容があるかないかで背景の画像を変える
         changeImages()
         
       }
@@ -68,7 +73,7 @@ class CardViewController: UIViewController {
         editContentTextView()
     }
     
-    
+    //ボタンをオンオフできるようにする
     @IBAction func checkButton(_ sender: UIButton){
         
         if checked == false{
@@ -76,13 +81,18 @@ class CardViewController: UIViewController {
         } else if checked == true {
             checked = false
         }
-        
+        //チェックボックスを押したかどうかとチェックボックスの画像を変える
         checkImage()
         
     }
     
-    
+    //チェックボックスを押したかどうかとチェックボックスの画像を変える
     func checkImage(){
+        //これまでチェックしたかどうかを読み込む(keyを変数にすることはできない？)
+        if saveData.object(forKey: .rowNumber) != nil {
+            checked = (saveData.object(forKey: .rowNumber) != nil)
+        }
+        
         if checked == false{
             //押してない時の
             checkedImageView.setBackgroundImage(checkIcon,for: .normal)
@@ -92,6 +102,8 @@ class CardViewController: UIViewController {
             checkedImageView.setBackgroundImage(checkedIcon,for: .normal)
             cardImageView.image = UIImage(named: imagesArray[3])
         }
+        
+        
     }
     
     //今までの書き込みを読み込んで自分の分を表示。
