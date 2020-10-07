@@ -23,7 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var todoArray : [String] = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
     
     //チェックボックスの状態を入れる配列
-    var onoffArray : [Bool] = [false, false]
+    var onoffArray : [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
     
     // レイアウト設定(エッジ)
@@ -77,7 +77,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        //今までの書き込みを読み込む
         roadTodoArray()
+        
+        //今までのチェックボックスの様子を読み込む
+        roadOnoffArray()
     }
     
 
@@ -98,6 +102,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     }
     
+    //今までのチェックボックスの様子を読み込む
+    func roadOnoffArray(){
+        if saveData.array(forKey: "check") != nil {
+      
+        onoffArray = saveData.object(forKey: "check") as! [Bool]
+        
+        collectionView.reloadData()
+        }
+    }
+    
+    
     // セル（要素）に表示する内容
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -111,7 +126,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //配列からラベルを表示
         titleLabel.text = todoArray[indexPath.row]
         
-        //画像の配列のデータを読み取って表示をする(全部変わる)
+        //画像の配列のデータを読み取って表示をする
         if todoArray[indexPath.row] == "" {
             let backgroundImage = UIImage(named: imagesArray[1])
             backgroundImageView.image = backgroundImage
@@ -119,6 +134,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let backgroundImage = UIImage(named: imagesArray[2])
             backgroundImageView.image = backgroundImage
         }
+        
+        //チェックボックスがtrueだったら画像を表示する
+        if onoffArray[indexPath.row] == true {
+            let backgroundImage = UIImage(named: imagesArray[0])
+            backgroundImageView.image = backgroundImage
+        }
+        
         
         return cell
         

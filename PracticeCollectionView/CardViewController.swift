@@ -17,16 +17,15 @@ class CardViewController: UIViewController {
     //今まで書き込んでいたものを入れる
     var todoTextArray = [String]()
     
+    //今までのチェックボックスの状態を入れる
+    var onoffArray = [Bool]()
+    
     //IndexPathの値
     var rowNumber: Int = 0
     
     //チェックボックスのオンオフ
     var checked: Bool = false
-    
-    //チェックされているかどうかを確かめる用(これいるかね？)
-    struct statusCheck {
-        var isChecked: Bool = false
-    }
+
     
     //背景画像の配列
       var imagesArray = ["checkedTask", "emptyTask", "enterTask", "checkedTask2"]
@@ -44,7 +43,8 @@ class CardViewController: UIViewController {
         displayContentTextView()
         //チェックボックスを押したかどうかとチェックボックスの画像を変える
         checkImage()
-
+        //今までのチェックボックスの様子を読み込んで表示
+        displayChecked()
         // Do any additional setup after loading the view.
     }
     
@@ -52,7 +52,8 @@ class CardViewController: UIViewController {
           super.viewDidAppear(animated)
         //内容があるかないかで背景の画像を変える
         changeImages()
-        
+        //チェックボックスを押したかどうかとチェックボックスの画像を変える
+        checkImage()
       }
     
         //内容があるかないかで背景の画像を変える
@@ -81,17 +82,11 @@ class CardViewController: UIViewController {
         } else if checked == true {
             checked = false
         }
-        //チェックボックスを押したかどうかとチェックボックスの画像を変える
-        checkImage()
         
     }
     
     //チェックボックスを押したかどうかとチェックボックスの画像を変える
     func checkImage(){
-        //これまでチェックしたかどうかを読み込む(keyを変数にすることはできない？)
-        if saveData.object(forKey: .rowNumber) != nil {
-            checked = (saveData.object(forKey: .rowNumber) != nil)
-        }
         
         if checked == false{
             //押してない時の
@@ -117,6 +112,18 @@ class CardViewController: UIViewController {
         }
     }
     
+    //今までのチェックボックスの内容を読み込んで表示
+    func displayChecked(){
+        
+        if saveData.array(forKey: "check") != nil {
+           onoffArray = saveData.object(forKey: "check") as! [Bool]
+               
+           //配列から自分のものを取り出して表示
+           checked = onoffArray[rowNumber]
+           }
+    }
+    
+    
     func editContentTextView(){
         
         //書き込んだものを配列に入れる
@@ -129,6 +136,16 @@ class CardViewController: UIViewController {
         saveData.set(todoTextArray, forKey: "text")
     }
     
+    func editContentCheckButton(){
+        //true,falseの情報を配列に入れる
+        onoffArray.insert(checked, at: rowNumber)
+        
+        //前の書き込みを消す
+        onoffArray.remove(at: rowNumber + 1)
+        
+        //保存
+        saveData.set(onoffArray, forKey: "check")
+    }
     
     
     
