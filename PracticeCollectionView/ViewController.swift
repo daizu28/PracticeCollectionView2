@@ -95,11 +95,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
        //今までの書き込みを読み込む
     func roadTodoArray(){
- 
+        if saveData.array(forKey: "check") != nil {
       todoArray = saveData.object(forKey: "text") as! [String]
         
         collectionView.reloadData()
 
+        }
     }
     
     //今までのチェックボックスの様子を読み込む

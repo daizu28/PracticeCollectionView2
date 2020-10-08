@@ -295,7 +295,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "reina112829-gmail.com.B1OO";
+				PRODUCT_BUNDLE_IDENTIFIER = B1OO2829;
 				PRODUCT_NAME = B1OO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -313,7 +313,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "reina112829-gmail.com.B1OO";
+				PRODUCT_BUNDLE_IDENTIFIER = B1OO2829;
 				PRODUCT_NAME = B1OO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

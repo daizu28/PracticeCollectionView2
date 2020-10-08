@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PracticeCollectionView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="B1OO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,7 +77,7 @@
         <!--Card View Controller-->
         <scene sceneID="drI-nC-GCH">
             <objects>
-                <viewController id="jIH-gf-Ro0" customClass="CardViewController" customModule="PracticeCollectionView" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jIH-gf-Ro0" customClass="CardViewController" customModule="B1OO" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S70-Ge-yqT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -112,7 +112,7 @@
                                     <action selector="back" destination="jIH-gf-Ro0" eventType="touchUpInside" id="gge-lb-oNr"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="ここにやりたいことを書くよ" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c66-y9-hcI">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c66-y9-hcI">
                                 <rect key="frame" x="67.666666666666686" y="304" width="240" height="141"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
