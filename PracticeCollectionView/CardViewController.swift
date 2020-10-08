@@ -18,7 +18,7 @@ class CardViewController: UIViewController {
     var todoTextArray = [String]()
     
     //今までのチェックボックスの状態を入れる
-    var onoffArray = [Bool]()
+    var onoffArray : [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
     //IndexPathの値
     var rowNumber: Int = 0
@@ -41,10 +41,9 @@ class CardViewController: UIViewController {
         super.viewDidLoad()
         // //今までの書き込みを読み込んで自分の分を表示。
         displayContentTextView()
-        //チェックボックスを押したかどうかとチェックボックスの画像を変える
-        checkImage()
-        //今までのチェックボックスの様子を読み込んで表示
+        //今までのチェックボックスの様子を読み込む
         displayChecked()
+
         // Do any additional setup after loading the view.
     }
     
@@ -52,15 +51,22 @@ class CardViewController: UIViewController {
           super.viewDidAppear(animated)
         //内容があるかないかで背景の画像を変える
         changeImages()
-        //チェックボックスを押したかどうかとチェックボックスの画像を変える
-        checkImage()
       }
     
         //内容があるかないかで背景の画像を変える
+        //チェックボックスを押したかどうかとチェックボックスの画像を変える
         func changeImages(){
             if contentTextView.text == "" {
                 cardImageView.image = UIImage(named: imagesArray[1])
                 checkedImageView.isEnabled = false
+            }  else if checked == false{
+                //押してない時の
+                checkedImageView.setBackgroundImage(checkIcon,for: .normal)
+                cardImageView.image = UIImage(named: imagesArray[2])
+            } else if checked == true{
+                //押した時の
+                checkedImageView.setBackgroundImage(checkedIcon,for: .normal)
+                cardImageView.image = UIImage(named: imagesArray[3])
             } else {
                 cardImageView.image = UIImage(named: imagesArray[2])
                 checkedImageView.isEnabled = true
@@ -68,10 +74,11 @@ class CardViewController: UIViewController {
               }
     
     
-    //1個前でも戻れるのかな？戻るボタン
+    //戻るボタン
     @IBAction func back(){
         self.dismiss(animated: true, completion: nil)
         editContentTextView()
+        editContentCheckButton()
     }
     
     //ボタンをオンオフできるようにする
@@ -83,23 +90,12 @@ class CardViewController: UIViewController {
             checked = false
         }
         
+        print(checked)
+        changeImages()
+        
     }
     
-    //チェックボックスを押したかどうかとチェックボックスの画像を変える
-    func checkImage(){
-        
-        if checked == false{
-            //押してない時の
-            checkedImageView.setBackgroundImage(checkIcon,for: .normal)
-            cardImageView.image = UIImage(named: imagesArray[2])
-        } else if checked == true{
-            //押した時の
-            checkedImageView.setBackgroundImage(checkedIcon,for: .normal)
-            cardImageView.image = UIImage(named: imagesArray[3])
-        }
-        
-        
-    }
+
     
     //今までの書き込みを読み込んで自分の分を表示。
     func displayContentTextView(){
@@ -118,7 +114,7 @@ class CardViewController: UIViewController {
         if saveData.array(forKey: "check") != nil {
            onoffArray = saveData.object(forKey: "check") as! [Bool]
                
-           //配列から自分のものを取り出して表示
+//           配列から自分のものを取り出して表示
            checked = onoffArray[rowNumber]
            }
     }

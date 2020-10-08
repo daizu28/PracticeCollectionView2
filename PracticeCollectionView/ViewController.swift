@@ -130,16 +130,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if todoArray[indexPath.row] == "" {
             let backgroundImage = UIImage(named: imagesArray[1])
             backgroundImageView.image = backgroundImage
+        } else if onoffArray[indexPath.row] == true {
+            //チェックボックスがtrueだったら画像を表示する
+            let backgroundImage = UIImage(named: imagesArray[0])
+            backgroundImageView.image = backgroundImage
         } else {
             let backgroundImage = UIImage(named: imagesArray[2])
             backgroundImageView.image = backgroundImage
         }
         
-        //チェックボックスがtrueだったら画像を表示する
-        if onoffArray[indexPath.row] == true {
-            let backgroundImage = UIImage(named: imagesArray[0])
-            backgroundImageView.image = backgroundImage
-        }
         
         
         return cell
