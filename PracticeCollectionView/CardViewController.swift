@@ -43,6 +43,7 @@ class CardViewController: UIViewController {
         displayContentTextView()
         //今までのチェックボックスの様子を読み込む
         displayChecked()
+        
 
         // Do any additional setup after loading the view.
     }
@@ -50,8 +51,15 @@ class CardViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
           super.viewDidAppear(animated)
         //内容があるかないかで背景の画像を変える
-        changeImages()
+        changeImages(contentTextView)
       }
+    
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewDidAppear(animated)
+        //内容があるかないかで背景の画像を変える
+        changeImages(contentTextView)
+      }
+    
     
     //キーボード以外タップでキーボードしまう
     override func didReceiveMemoryWarning() {
@@ -63,7 +71,7 @@ class CardViewController: UIViewController {
     
         //内容があるかないかで背景の画像を変える
         //チェックボックスを押したかどうかとチェックボックスの画像を変える
-        func changeImages(){
+    func changeImages(_ contentTextView: UITextView){
             if contentTextView.text == "" {
                 cardImageView.image = UIImage(named: imagesArray[1])
                 checkedImageView.isEnabled = false
@@ -99,7 +107,7 @@ class CardViewController: UIViewController {
         }
         
         print(checked)
-        changeImages()
+        changeImages(contentTextView)
         
     }
     
