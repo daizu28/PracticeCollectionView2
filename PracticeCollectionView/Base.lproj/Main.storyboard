@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -42,7 +42,7 @@
                                                     <rect key="frame" x="19" y="53" width="121" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="11"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -92,10 +92,11 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jb-AW-Xal">
                                 <rect key="frame" x="125" y="488" width="125" height="145"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="FnI-Eg-wU4"/>
                                     <constraint firstAttribute="height" constant="145" id="JHQ-XS-hDh"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="145" id="PKn-sZ-0de"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="135" id="PX5-VO-c6C"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="S6l-ca-JAY"/>
+                                    <constraint firstAttribute="width" constant="125" id="WFi-EE-13G"/>
                                 </constraints>
                                 <connections>
                                     <action selector="checkButton:" destination="jIH-gf-Ro0" eventType="touchUpInside" id="ogb-9f-Ljm"/>
@@ -114,21 +115,20 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="c66-y9-hcI">
                                 <rect key="frame" x="67.666666666666686" y="304" width="240" height="141"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="141" id="1ze-Mv-bty"/>
                                     <constraint firstAttribute="height" constant="141" id="8ue-dd-8Xe"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="66" id="F5s-H9-GBa"/>
                                     <constraint firstAttribute="width" constant="240" id="S2Y-2L-3jD"/>
                                 </constraints>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="8jb-AW-Xal" firstAttribute="centerX" secondItem="S70-Ge-yqT" secondAttribute="centerX" id="1Y5-Jv-c0A"/>
+                            <constraint firstItem="8jb-AW-Xal" firstAttribute="centerX" secondItem="S70-Ge-yqT" secondAttribute="centerX" id="AgR-ND-3Kf"/>
                             <constraint firstItem="WiT-ZU-IOp" firstAttribute="bottom" secondItem="8jb-AW-Xal" secondAttribute="bottom" constant="145" id="Cbh-TW-dwL"/>
                             <constraint firstItem="skA-Lt-Len" firstAttribute="top" secondItem="WiT-ZU-IOp" secondAttribute="top" constant="29" id="OR3-av-9Zw"/>
                             <constraint firstItem="GCH-Di-z1C" firstAttribute="centerX" secondItem="S70-Ge-yqT" secondAttribute="centerX" id="SKJ-IA-bej"/>
