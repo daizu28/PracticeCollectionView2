@@ -53,6 +53,14 @@ class CardViewController: UIViewController {
         changeImages()
       }
     
+    //キーボード以外タップでキーボードしまう
+    override func didReceiveMemoryWarning() {
+         super.didReceiveMemoryWarning()
+     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
         //内容があるかないかで背景の画像を変える
         //チェックボックスを押したかどうかとチェックボックスの画像を変える
         func changeImages(){
@@ -145,28 +153,7 @@ class CardViewController: UIViewController {
     
     
     
-    //キーボードをタッチで閉じれる？
-//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        //非表示にする。
-//        if(contentTextView.isFirstResponder){
-//            contentTextView.resignFirstResponder()
-//        }
-    
-    
-    //書き込みがあった時に背景を変える
-    
-    
-    
-    //書き込みがあった時にチェックボタンを表示する
-    
-    
-    
-    //チェックボタンを押したら背景が変わる
-    
-    
-    
-    //書き込んだ内容をメインストリーボードでもみれるようにする
-    
+
     
     
 
