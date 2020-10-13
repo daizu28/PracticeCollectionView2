@@ -18,7 +18,7 @@ class CardViewController: UIViewController {
     var todoTextArray : [String] = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
     
     //今までのチェックボックスの状態を入れる
-    var onoffArray : [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+    var onoffArray : [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
     //IndexPathの値
     var rowNumber: Int = 0
@@ -28,11 +28,18 @@ class CardViewController: UIViewController {
 
     
     //背景画像の配列
-      var imagesArray = ["checkedTask", "emptyTask", "enterTask", "checkedTask2"]
+      var imagesArray = ["checkedTask", "emptyTask", "enterTask", "checkedTask2", "enterTask_p", "enterTask_b", "enterTask_c", "enterTask_g", "enterTask_o", "enterTask_r", "checkedTask2_p",  "checkedTask2_b", "checkedTask2_c", "checkedTask2_g", "checkedTask2_o", "checkedTask2_r"]
+    
     
     //チェックボタンの画像
     let checkIcon = UIImage(named: "checkIcon")
     let checkedIcon = UIImage(named: "checkedIcon")
+    let checkedIcon_p = UIImage(named: "checkedIcon_p")
+    let checkedIcon_b = UIImage(named: "checkedIcon_b")
+    let checkedIcon_c = UIImage(named: "checkedIcon_c")
+    let checkedIcon_g = UIImage(named: "checkedIcon_g")
+    let checkedIcon_o = UIImage(named: "checkedIcon_o")
+    let checkedIcon_r = UIImage(named: "checkedIcon_r")
     
     //ユーザーデフォルト使いますよ
     let saveData: UserDefaults = UserDefaults.standard
@@ -43,7 +50,10 @@ class CardViewController: UIViewController {
         displayContentTextView()
         //今までのチェックボックスの様子を読み込む
         displayChecked()
-        
+
+        print(todoTextArray.count)
+        //なぜか配列が80個しかないと言われる
+        print(onoffArray.count)
 
         // Do any additional setup after loading the view.
     }
@@ -58,6 +68,7 @@ class CardViewController: UIViewController {
           super.viewDidAppear(animated)
         //内容があるかないかで背景の画像を変える
         changeImages(contentTextView)
+        
       }
     
     
@@ -67,6 +78,8 @@ class CardViewController: UIViewController {
      }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        //内容があるかないかで背景の画像を変える
+        changeImages(contentTextView)
     }
     
         //内容があるかないかで背景の画像を変える
@@ -75,18 +88,70 @@ class CardViewController: UIViewController {
             if contentTextView.text == "" {
                 cardImageView.image = UIImage(named: imagesArray[1])
                 checkedImageView.isEnabled = false
-            }  else if checked == false{
-                //押してない時の
-                checkedImageView.setBackgroundImage(checkIcon,for: .normal)
-                cardImageView.image = UIImage(named: imagesArray[2])
-            } else if checked == true{
-                //押した時の
+            } else if checked == true && 0 ... 14 ~= rowNumber{
+                //押した時の(ピンク)
                 checkedImageView.setBackgroundImage(checkedIcon,for: .normal)
                 cardImageView.image = UIImage(named: imagesArray[3])
-            } else {
+            }  else if checked == true && 15 ... 28 ~= rowNumber{
+                //checkedTask2紫
+                checkedImageView.setBackgroundImage(checkedIcon_p,for: .normal)
+                cardImageView.image = UIImage(named: imagesArray[10])
+            }  else if checked == true && 29 ... 42 ~= rowNumber{
+                //checkedTask2青
+                checkedImageView.setBackgroundImage(checkedIcon_b,for: .normal)
+                cardImageView.image = UIImage(named: imagesArray[11])
+            }  else if checked == true && 43 ... 56 ~= rowNumber{
+                //checkedTask2水色
+                checkedImageView.setBackgroundImage(checkedIcon_c,for: .normal)
+                cardImageView.image = UIImage(named: imagesArray[12])
+            } else if checked == true && 57 ... 70 ~= rowNumber{
+                //checkedTask2緑
+                checkedImageView.setBackgroundImage(checkedIcon_g,for: .normal)
+                cardImageView.image = UIImage(named: imagesArray[13])
+            } else if checked == true && 71 ... 84 ~= rowNumber{
+                //checkedTask2オレンジ
+                checkedImageView.setBackgroundImage(checkedIcon_o,for: .normal)
+                cardImageView.image = UIImage(named: imagesArray[14])
+            } else if checked == true && 85 ... 99 ~= rowNumber{
+                //checkedTask2赤
+                checkedImageView.setBackgroundImage(checkedIcon_r,for: .normal)
+                cardImageView.image = UIImage(named: imagesArray[15])
+            } else if contentTextView.text != "" && 0 ... 14 ~= rowNumber{
+                //enterピンク
                 cardImageView.image = UIImage(named: imagesArray[2])
                 checkedImageView.isEnabled = true
-            }
+                checkedImageView.setBackgroundImage(checkIcon,for: .normal)
+            } else if contentTextView.text != "" &&  15 ... 28 ~= rowNumber{
+                //enter紫
+                cardImageView.image = UIImage(named: imagesArray[4])
+                checkedImageView.isEnabled = true
+                checkedImageView.setBackgroundImage(checkIcon,for: .normal)
+            } else if contentTextView.text != "" &&  29 ... 42 ~= rowNumber{
+                //enter青
+                cardImageView.image = UIImage(named: imagesArray[5])
+                checkedImageView.isEnabled = true
+                checkedImageView.setBackgroundImage(checkIcon,for: .normal)
+            } else if contentTextView.text != "" &&  43 ... 56 ~= rowNumber{
+                //enter水色
+                cardImageView.image = UIImage(named: imagesArray[6])
+                checkedImageView.isEnabled = true
+                checkedImageView.setBackgroundImage(checkIcon,for: .normal)
+            } else if contentTextView.text != "" &&  57 ... 70 ~= rowNumber{
+                //enter緑
+                cardImageView.image = UIImage(named: imagesArray[7])
+                checkedImageView.isEnabled = true
+                checkedImageView.setBackgroundImage(checkIcon,for: .normal)
+            } else if contentTextView.text != "" &&  71 ... 84 ~= rowNumber{
+                //enterオレンジ
+                cardImageView.image = UIImage(named: imagesArray[8])
+                checkedImageView.isEnabled = true
+                checkedImageView.setBackgroundImage(checkIcon,for: .normal)
+            } else if contentTextView.text != "" &&  85 ... 99 ~= rowNumber{
+                //enter赤
+                cardImageView.image = UIImage(named: imagesArray[9])
+                checkedImageView.isEnabled = true
+                checkedImageView.setBackgroundImage(checkIcon,for: .normal)
+                }
               }
     
     
@@ -130,7 +195,7 @@ class CardViewController: UIViewController {
         if saveData.array(forKey: "check") != nil {
            onoffArray = saveData.object(forKey: "check") as! [Bool]
                
-//           配列から自分のものを取り出して表示
+    //配列から自分のものを取り出して表示
            checked = onoffArray[rowNumber]
            }
     }

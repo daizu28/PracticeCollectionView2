@@ -14,7 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collectionView: UICollectionView!
     
     
-    var imagesArray = ["checkedTask", "emptyTask", "enterTask"]
+    var imagesArray = ["checkedTask", "emptyTask", "enterTask", "enterTask_p", "enterTask_b", "enterTask_c", "enterTask_g", "enterTask_o", "enterTask_r", "checkedTask_p", "checkedTask_b", "checkedTask_c", "checkedTask_g", "checkedTask_o", "checkedTask_r"]
     
     //ユーザーデフォルトを使うよ
     let saveData: UserDefaults = UserDefaults.standard
@@ -23,7 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var todoArray : [String] = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
     
     //チェックボックスの状態を入れる配列
-    var onoffArray : [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+    var onoffArray : [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,  false, false, false, false, false, false, false, false, false, false]
     
     
     // レイアウト設定(エッジ)
@@ -63,6 +63,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         layout.sectionInset = UIEdgeInsets(top: 24, left: 16, bottom: 24, right: 16)
         //横スクロール
         layout.scrollDirection = .horizontal
+        
+        print(onoffArray.count)
+        print(todoArray.count)
         
         //遷移されたことを検知していく
 //        collectionView.dataSource = self
@@ -127,20 +130,67 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //配列からラベルを表示
         titleLabel.text = todoArray[indexPath.row]
         
-        //画像の配列のデータを読み取って表示をする
+        //配列のデータを読み取って画像を表示をする
         if todoArray[indexPath.row] == "" {
             let backgroundImage = UIImage(named: imagesArray[1])
             backgroundImageView.image = backgroundImage
-        } else if onoffArray[indexPath.row] == true {
-            //チェックボックスがtrueだったら画像を表示する
+        }  else if onoffArray[indexPath.row] == true && 0 ... 14 ~= indexPath.row{
+            //チェックボックスがtrueだったら画像を表示する(checkedピンク)
             let backgroundImage = UIImage(named: imagesArray[0])
             backgroundImageView.image = backgroundImage
-        } else {
+        } else if onoffArray[indexPath.row] == true && 15 ... 28 ~= indexPath.row{
+            //checked紫
+            let backgroundImage = UIImage(named: imagesArray[9])
+            backgroundImageView.image = backgroundImage
+        } else if onoffArray[indexPath.row] == true && 29 ... 42 ~= indexPath.row{
+            //checked青
+            let backgroundImage = UIImage(named: imagesArray[10])
+            backgroundImageView.image = backgroundImage
+        } else if onoffArray[indexPath.row] == true && 43 ... 56 ~= indexPath.row{
+            //checked水色
+            let backgroundImage = UIImage(named: imagesArray[11])
+            backgroundImageView.image = backgroundImage
+        }  else if onoffArray[indexPath.row] == true && 57 ... 70 ~= indexPath.row{
+            //checked緑
+            let backgroundImage = UIImage(named: imagesArray[12])
+            backgroundImageView.image = backgroundImage
+        }  else if onoffArray[indexPath.row] == true && 71 ... 84 ~= indexPath.row{
+            //checkedオレンジ
+            let backgroundImage = UIImage(named: imagesArray[13])
+            backgroundImageView.image = backgroundImage
+        }  else if onoffArray[indexPath.row] == true && 85 ... 99 ~= indexPath.row{
+            //checked赤
+            let backgroundImage = UIImage(named: imagesArray[14])
+            backgroundImageView.image = backgroundImage
+        } else if  0 ... 14 ~= indexPath.row{
+            //enterピンク
             let backgroundImage = UIImage(named: imagesArray[2])
             backgroundImageView.image = backgroundImage
-        }
-        
-        
+        } else if 15 ... 28 ~= indexPath.row{
+            //enter紫
+            let backgroundImage = UIImage(named: imagesArray[3])
+            backgroundImageView.image = backgroundImage
+        } else if 29 ... 42 ~= indexPath.row{
+            //enter青
+            let backgroundImage = UIImage(named: imagesArray[4])
+            backgroundImageView.image = backgroundImage
+        } else if 43 ... 56 ~= indexPath.row{
+            //enter緑
+            let backgroundImage = UIImage(named: imagesArray[5])
+            backgroundImageView.image = backgroundImage
+        } else if 57 ... 70 ~= indexPath.row{
+            //enter緑
+            let backgroundImage = UIImage(named: imagesArray[6])
+            backgroundImageView.image = backgroundImage
+        } else if 71 ... 84 ~= indexPath.row{
+            //enterオレンジ
+            let backgroundImage = UIImage(named: imagesArray[7])
+            backgroundImageView.image = backgroundImage
+        } else if 85 ... 99 ~= indexPath.row{
+            //enter赤
+            let backgroundImage = UIImage(named: imagesArray[8])
+            backgroundImageView.image = backgroundImage
+               }
         
         return cell
         
