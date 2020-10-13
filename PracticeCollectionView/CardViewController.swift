@@ -51,9 +51,12 @@ class CardViewController: UIViewController {
         //今までのチェックボックスの様子を読み込む
         displayChecked()
 
+        //配列の数を確認する
         print(todoTextArray.count)
         //なぜか配列が80個しかないと言われる
         print(onoffArray.count)
+        //rownumberの値渡せてる？
+        print(rowNumber)
 
         // Do any additional setup after loading the view.
     }
