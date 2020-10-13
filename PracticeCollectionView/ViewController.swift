@@ -23,7 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var todoArray : [String] = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
     
     //チェックボックスの状態を入れる配列
-    var onoffArray : [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,  false, false, false, false, false, false, false, false, false, false]
+    var onoffArray : [Bool] = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
     
     
     // レイアウト設定(エッジ)
@@ -98,7 +98,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
        //今までの書き込みを読み込む
     func roadTodoArray(){
-        if saveData.array(forKey: "check") != nil {
+        if saveData.array(forKey: "text") != nil {
       todoArray = saveData.object(forKey: "text") as! [String]
         
         collectionView.reloadData()
@@ -238,27 +238,3 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
 
 
-
-//本当は良くないかもだけどgithubで上手にブランチが切れてなかった用のコメントアウト
-//    // Screenサイズに応じたセルサイズを返す
-//       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        //paddingだからセル同士の隙間？
-//           let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-//        //padding分を引いてる？
-//           let availableWidth = view.frame.width - paddingSpace
-//        //padding分を引いてアイテム数で割ってるのが横幅になる？
-//           let widthPerItem = availableWidth / itemsPerRow
-//        //縦幅と横幅が同じということ
-//           return CGSize(width: widthPerItem, height: widthPerItem)
-//       }
-//
-//
-//       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//           return sectionInsets
-//       }
-//
-//       // セルの行間の設定
-//       func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//           return 5.0
-//       }
