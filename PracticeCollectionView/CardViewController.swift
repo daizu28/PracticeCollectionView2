@@ -57,6 +57,9 @@ class CardViewController: UIViewController {
         print(onoffArray.count)
         //rownumberの値渡せてる？
         print(rowNumber)
+        
+        //スワイプで戻る
+        setSwipeBack()
 
         // Do any additional setup after loading the view.
     }
@@ -227,7 +230,12 @@ class CardViewController: UIViewController {
         saveData.set(onoffArray, forKey: "check")
     }
     
-    
+    //スワイプで戻れるようにする
+    func setSwipeBack() {
+        let target = self.navigationController?.value(forKey: "_cachedInteractionController")
+        let recognizer = UIPanGestureRecognizer(target: target, action: Selector(("handleNavigationTransition:")))
+        self.view.addGestureRecognizer(recognizer)
+    }
     
 
     
