@@ -236,10 +236,44 @@ class CardViewController: UIViewController {
         let recognizer = UIPanGestureRecognizer(target: target, action: Selector(("handleNavigationTransition:")))
         self.view.addGestureRecognizer(recognizer)
     }
-    
 
-    
-    
+//    //プレースホルダー IBDesignableは見栄えを変更できるやつらしい
+//    @IBDesignable class PlaceHolderTextView: UITextView {
+//    @IBInspectable private var placeholder: String = "やってみたいことは何？"{
+//        willSet{
+//            self.placeHolderLabel.text = newValue
+//            self.placeHolderLabel.sizeToFit()
+//        }
+//    }
+//
+//    private lazy var placeHolderLabel: UILabel = {
+//          let label = UILabel(frame: CGRect(x: 6.0, y: 6.0, width: 0.0, height: 0.0))
+//          label.lineBreakMode = .byWordWrapping
+//          label.numberOfLines = 0
+//          label.textColor = UIColor(red: 0.0, green: 0.0, blue: 0.0980392, alpha: 0.22)
+//          label.backgroundColor = .clear
+//          self.addSubview(label)
+//          return label
+//      }()
+//
+//    deinit {
+//           NotificationCenter.default.removeObserver(self)
+//       }
+//
+//    override func awakeFromNib() {
+//           super.awakeFromNib()
+//           changeVisiblePlaceHolder()
+//        NotificationCenter.default.addObserver(self, selector: #selector(textChanged), name: UITextView.textDidChangeNotification, object: nil)
+//       }
+//
+//    private func changeVisiblePlaceHolder() {
+//        self.placeHolderLabel.alpha = (self.placeHolder.isEmpty || !self.text.isEmpty) ? 0.0 : 1.0
+//    }
+//
+//    @objc private func textChanged(notification: NSNotification?) {
+//        changeVisiblePlaceHolder()
+//    }
+//    }
 
     /*
     // MARK: - Navigation
