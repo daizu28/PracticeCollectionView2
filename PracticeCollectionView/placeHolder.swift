@@ -9,7 +9,7 @@
 import UIKit
 
 //プレースホルダー(正直わかってない) IBDesignableは見栄えを変更できるやつらしい
-//IBDesignableとIBInspectable修飾子をつけることによってStoryboard上で見た目、カスタムの属性を変更できます。(すごない？)
+//IBDesignableとIBInspectable修飾子をつけることによってStoryboard上で見た目、カスタムの属性を変更できます。(すごない？) ストーリーボードでクラスにPlaceHOlderTextViewを割り当てて使うよ！
 
 @IBDesignable class PlaceHolderTextView: UITextView {
 

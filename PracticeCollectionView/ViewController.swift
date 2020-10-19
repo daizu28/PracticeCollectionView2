@@ -14,6 +14,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collectionView: UICollectionView!
     
     
+    //プレースホルダー風のラベルのための配列
+    var placeholderArray : [String] = ["やってみたいことはある？", "", "", "", "", "", "行ってみたい場所はある？", "", "", "", "", "", "見てみたい景色はある？", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "食べてみたいものはなに？", "", "", "", "", "", "", "", "", "", "住んでみたい場所はある？", "", "", "", "", "なってみたいものはある？", "", "", "", "", "", "", "", "作ってみたいものはある？", "", "", "", "", "", "", "", "", "", "", "挑戦してみたいことはある？", "", "", "", "", "", "", "探しているものはある？", "", "", "", "", "", "", "", "", "買ってみたいものはある？", "", "", "", "", "", "", "", "知りたいことはある？", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+    
+    
     var imagesArray = ["checkedTask", "emptyTask", "enterTask", "enterTask_p", "enterTask_b", "enterTask_c", "enterTask_g", "enterTask_o", "enterTask_r", "checkedTask_p", "checkedTask_b", "checkedTask_c", "checkedTask_g", "checkedTask_o", "checkedTask_r"]
     
     //ユーザーデフォルトを使うよ
@@ -127,6 +131,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //Tag番号を使ってインスタンスをつくる(ラベル)
         let titleLabel = cell.contentView.viewWithTag(2) as! UILabel
         
+        //Tag番号を使ってインスタンスをつくる(ラベルプレースホルダー風)
+        let likePlaceholderLabel = cell.contentView.viewWithTag(3) as! UILabel
+        
+        //書き込みがガチでない時だけラベルを表示させたい
+            if todoArray[indexPath.row] == ""{
+                //配列からプレースホルダー風のラベルの表示
+                likePlaceholderLabel.text = placeholderArray[indexPath.row]
+            } else {
+                likePlaceholderLabel.text = ""
+        }
+
         //配列からラベルを表示
         titleLabel.text = todoArray[indexPath.row]
         
